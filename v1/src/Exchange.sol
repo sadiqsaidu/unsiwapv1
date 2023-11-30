@@ -21,5 +21,14 @@ contract Exchange {
         return IERC20(tokenAddress).balanceOf(address(this));
     }
 
-    
+    function getPrice(uint256 inputReserve, uint256 outputReserve)
+        public
+        pure
+        returns (uint256)
+    {
+        require(inputReserve > 0 && outputReserve > 0, "invalid reserves");
+
+        return inputReserve / outputReserve;
+    }
+
 }
